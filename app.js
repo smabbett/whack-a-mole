@@ -16,21 +16,21 @@ let timerId = null;
 let maxScore = 0;
 
 //random sounds when hit
-var audioArray = [
-	'sounds/impactsplat02.mp3.flac',
-	'sounds/pop1.ogg',
-	'sounds/pop2.ogg',
-	'sounds/pop3.ogg',
-	'sounds/ohmy.wav',
-];
+// var audioArray = [
+// 	'sounds/impactsplat02.mp3.flac',
+// 	'sounds/pop1.ogg',
+// 	'sounds/pop2.ogg',
+// 	'sounds/pop3.ogg',
+// 	'sounds/ohmy.wav',
+// ];
 
 function randomSquare() {
 	//clear the squares of class mole
 	squares.forEach((square) => {
 		square.classList.remove('mole');
 	});
-	//Math floor to round to nearest integer, Math random range 1 - 15
-	let randomPosition = squares[Math.floor(Math.random() * 15)];
+	//Math floor to round to nearest integer, Math random range 1 - 12
+	let randomPosition = squares[Math.floor(Math.random() * 12)];
 	randomPosition.classList.add('mole');
 
 	//assign id of randomPosition to hitPosition for use later
@@ -43,8 +43,10 @@ squares.forEach((square) => {
 	square.addEventListener('mousedown', () => {
 		if (square.id == hitPosition) {
 			result++;
-			let randomAudio = new Audio(audioArray[Math.floor(Math.random() * 5)]);
-			randomAudio.play();
+			// let randomAudio = new Audio(audioArray[Math.floor(Math.random() * 5)]);
+			// randomAudio.play();
+			let hitAudio = new Audio('sounds/impactsplat02.mp3.flac');
+			hitAudio.play();
 			score.textContent = result;
 			hitPosition = null;
 		} else {
